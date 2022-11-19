@@ -19,7 +19,7 @@ import Date from "./Date.astro";
                 class="text-[1rem] sm:text-2xl font-bold text-slate-900"
                 data-name
               >
-                Acá iría tu nombre... pero no lo escribiste :(
+                Acá va tu nombre...
               </div>
               <div class="mt-2">
                 <h1
@@ -34,12 +34,12 @@ import Date from "./Date.astro";
               </div>
             </div>
 
-            <div class="max-w-[60px]">
+            <div class="max-w-[100px]">
               <img
                 src="https://via.placeholder.com/150"
                 alt="sticker seleccionado"
                 data-selected
-                class="rounded max-h-[60px]"
+                class="rounded max-h-[100px]"
               />
             </div>
           </div>
@@ -66,11 +66,15 @@ import Date from "./Date.astro";
             place="Facultad de Artes"
             link="#"
           />
-          <div class="flex justify-center relative mb-4 mt-6">
-            <button
-              class="rounded bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white px-4 py-1"
-              >Voy a ir</button
+          <div class="flex justify-center relative mb-4 mt-6" data-buttons>
+            <button class="share-button" data-share>Voy a ir!</button>
+            <div
+              class="hidden max-w-[40%] justify-center flex-col"
+              data-divlink
             >
+              <p>Copiá y mandame el link de la tarjeta:</p>
+              <button class="share-button" data-link>Copiar link!</button>
+            </div>
             <p class="absolute bottom-[-25px] right-[-5px]">
               Te espero <br /> &#128150; Meli
             </p>
@@ -85,19 +89,59 @@ import Date from "./Date.astro";
   window.onload = () => {
     const cardName = document.querySelector("[data-name]");
     const cardImg = document.querySelector("[data-selected]");
+    const shareButtons = document.querySelector("[data-buttons]");
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
-    console.log("params", params.imgUrl);
-    if (params.imgUrl) {
-      cardImg.setAttribute("src", params.imgUrl);
-    } else {
-      cardImg.setAttribute("src", localStorage.getItem("cardImg"));
+
+    if (Object.keys(params).length === 0) {
+      location.href = "http://localhost:3000";
     }
-    //cardName.textContent = localStorage.getItem("cardName");
+
+    localStorage.removeItem("cardImg");
+    localStorage.removeItem("cardName");
+    //include share buttons?
+    if (params.shared) {
+      shareButtons.classList.remove("flex");
+      shareButtons.classList.add("hidden");
+    }
+    //set img src
+    console.log(params.cardImg === "null");
+    if (params.cardImg !== "null") {
+      cardImg.setAttribute("src", params.cardImg);
+    } else {
+      cardImg.setAttribute("src", "image/img-meli-1.webp");
+    }
+    //set name
+    if (params.cardName) {
+      cardName.textContent =
+        params.cardName === "null"
+          ? "Acá iría tu nombre... pero no lo escribiste :("
+          : params.cardName;
+    }
   };
+
+  const shareButton = document.querySelector("[data-share]");
+  const shareLink = document.querySelector("[data-link]");
+  const shareDiv = document.querySelector("[data-divlink]");
+  shareButton.addEventListener("click", () => {
+    setTimeout(() => {
+      shareButton.classList.add("hidden");
+      shareDiv.classList.remove("hidden");
+      shareDiv.classList.add("flex");
+    });
+  });
+
+  shareLink.addEventListener("click", () => {
+    console.log(location.href);
+    navigator.clipboard.writeText(location.href + "&shared=true");
+  });
 </script>
 
 <style>
+  .share-button {
+    @apply rounded bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white px-4 py-1 active:from-gray-900
+    active:to-black;
+  }
   .atropos {
     position: relative;
     display: block;
