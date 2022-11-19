@@ -3,7 +3,7 @@ import Date from "./Date.astro";
 ---
 
 <div
-  class="atropos p-8 w-full sm:w-[480px] md:w-[800px] md:aspect-[1.91:1] max-h-screen mx-auto"
+  class="atropos p-8 w-full sm:w-[480px] md:w-[800px] md:aspect-[1.91:1] mx-auto"
 >
   <div class="atropos-scale">
     <div class="atropos-rotate">
@@ -13,33 +13,35 @@ import Date from "./Date.astro";
         <div
           class="atropos-inner transition-all duration-700 relative p-4 border-4 rounded-md shadow-2xl border-[color:var(--border-card)] bg-[color:var(--background-card)] backdrop-blur-sm flex flex-col"
         >
-          <div class="flex flex-row justify-between items-center mb-4">
+          <div
+            class="flex flex-col sm:flex-row justify-between items-center mb-4"
+          >
             <div class="flex flex-col">
               <div
-                class="text-[1rem] sm:text-2xl font-bold text-slate-900"
+                class="text-[1.5rem] sm:text-2xl md:text-3xl font-bold text-slate-900"
                 data-name
               >
                 Acá va tu nombre...
               </div>
               <div class="mt-2">
                 <h1
-                  class="text-3xl leading-none text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-900 to-black font-black"
+                  class="text-3xl leading-none text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-900 to-black font-black md:text-6xl"
                   data-atropos-offset="2"
                 >
                   ME RECIBÍ!!!
                 </h1>
-                <p class="text-sm pl-2">
+                <p class="text-sm md:text-lg md:pl-0 md:text-center pl-2">
                   de profe de música &#128105; &#127929;
                 </p>
               </div>
             </div>
 
-            <div class="max-w-[100px]">
+            <div class="w-[100px] md:w-[170px] mt-2">
               <img
                 src="https://via.placeholder.com/150"
                 alt="sticker seleccionado"
                 data-selected
-                class="rounded max-h-[100px]"
+                class="rounded h-[100px] md:h-[170px]"
               />
             </div>
           </div>
@@ -56,7 +58,7 @@ import Date from "./Date.astro";
             link="#"
           />
           <h2
-            class="text-lg leading-none text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-900 to-black font-bold mt-4 mb-2"
+            class="text-lg leading-none text-transparent bg-clip-text bg-gradient-to-r from-gray-700 via-gray-900 to-black font-bold mt-4 mb-2 pl-8 md:text-center md:pl-0"
           >
             Y el festejo continúa...
           </h2>
@@ -69,13 +71,17 @@ import Date from "./Date.astro";
           <div class="flex justify-center relative mb-4 mt-6" data-buttons>
             <button class="share-button" data-share>Voy a ir!</button>
             <div
-              class="hidden max-w-[40%] justify-center flex-col"
+              class="hidden max-w-[40%] md:max-w-[50%] justify-center flex-col"
               data-divlink
             >
-              <p>Copiá y mandame el link de la tarjeta:</p>
+              <p class="md:text-lg md:font-semibold">
+                Copiá y mandame el link de la tarjeta:
+              </p>
               <button class="share-button" data-link>Copiar link!</button>
             </div>
-            <p class="absolute bottom-[-25px] right-[-5px]">
+            <p
+              class="absolute bottom-[-25px] right-[-5px] md:text-lg md:font-semibold"
+            >
               Te espero <br /> &#128150; Meli
             </p>
           </div>
@@ -94,7 +100,8 @@ import Date from "./Date.astro";
     const params = Object.fromEntries(urlSearchParams.entries());
 
     if (Object.keys(params).length === 0) {
-      location.href = "http://localhost:3000";
+      //location.href = "http://localhost:3000";
+      location.href = "https://tarjeta-meli.netlify.app/";
     }
 
     localStorage.removeItem("cardImg");
@@ -140,7 +147,7 @@ import Date from "./Date.astro";
 <style>
   .share-button {
     @apply rounded bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white px-4 py-1 active:from-gray-900
-    active:to-black;
+    active:to-black md:text-xl md:px-6;
   }
   .atropos {
     position: relative;
