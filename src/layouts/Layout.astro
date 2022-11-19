@@ -1,0 +1,54 @@
+---
+import "../global.css";
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+  <script is:global>
+    window.imgParam = "";
+    window.currentName = "";
+  </script>
+  <script type="module">
+    const parentDiv = document.querySelector("[data-images]");
+    let imgList = Array.from(parentDiv.children);
+    const inputName = document.querySelector("[data-input]");
+    const nameCard = document.querySelector("[data-name]");
+    const imgCard = document.querySelector("[data-selected]");
+
+    inputName.addEventListener("change", (e) => {
+      console.log(e);
+      let text = e.target.value;
+      //!REVISAR ACÁ
+      nameCard.textContent = text;
+      window.currentName = text;
+    });
+
+    imgList.forEach((img) => {
+      img.children[0].addEventListener("click", () => {
+        imgList.forEach((img) => {
+          img.children[0].classList.remove("border-purple-500");
+        });
+        img.children[0].classList.add("border-purple-500");
+        console.log(img.children[0].getAttribute("src"));
+        //!REVISAR ACÁ
+        window.imgParam = img.children[0].getAttribute("src");
+        imgCard.setAttribute("src", img.children[0].getAttribute("src"));
+      });
+    });
+  </script>
+</html>
