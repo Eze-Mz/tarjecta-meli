@@ -19,36 +19,4 @@ const { title } = Astro.props;
   <body>
     <slot />
   </body>
-  <script is:global>
-    window.imgParam = "";
-    window.currentName = "";
-  </script>
-  <script type="module">
-    const parentDiv = document.querySelector("[data-images]");
-    let imgList = Array.from(parentDiv.children);
-    const inputName = document.querySelector("[data-input]");
-    const nameCard = document.querySelector("[data-name]");
-    const imgCard = document.querySelector("[data-selected]");
-
-    inputName.addEventListener("change", (e) => {
-      console.log(e);
-      let text = e.target.value;
-      //!REVISAR ACÁ
-      nameCard.textContent = text;
-      window.currentName = text;
-    });
-
-    imgList.forEach((img) => {
-      img.children[0].addEventListener("click", () => {
-        imgList.forEach((img) => {
-          img.children[0].classList.remove("border-purple-500");
-        });
-        img.children[0].classList.add("border-purple-500");
-        console.log(img.children[0].getAttribute("src"));
-        //!REVISAR ACÁ
-        window.imgParam = img.children[0].getAttribute("src");
-        imgCard.setAttribute("src", img.children[0].getAttribute("src"));
-      });
-    });
-  </script>
 </html>

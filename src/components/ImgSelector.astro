@@ -1,10 +1,10 @@
 ---
 const imgUrls = [
   "image/img-meli-1.webp",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
+  "image/img-meli-2.webp",
+  "image/img-meli-3.webp",
+  "image/img-meli-4.webp",
+  "image/img-meli-5.webp",
 ];
 ---
 
@@ -17,8 +17,12 @@ const imgUrls = [
   {
     imgUrls.map((img, i) => {
       return (
-        <div class="md:w-[100px] w-[50px]">
-          <img src={img} alt="imagen para seleccionar" class="border rounded" />
+        <div class="md:w-[100px] md:h-[100px] w-[50px] h-[50px]">
+          <img
+            src={img}
+            alt="imagen para seleccionar"
+            class="border rounded md:h-[100px] h-[50px]"
+          />
         </div>
       );
     })
