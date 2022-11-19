@@ -38,7 +38,7 @@ import Date from "./Date.astro";
 
             <div class="w-[100px] md:w-[170px] mt-2">
               <img
-                src="https://via.placeholder.com/150"
+                src="image/img-meli-1.webp"
                 alt="sticker seleccionado"
                 data-selected
                 class="rounded h-[100px] md:h-[170px]"
@@ -100,8 +100,8 @@ import Date from "./Date.astro";
     const params = Object.fromEntries(urlSearchParams.entries());
 
     if (Object.keys(params).length === 0) {
-      //location.href = "http://localhost:3000";
-      location.href = "https://tarjeta-meli.netlify.app/";
+      location.href = "http://localhost:3000";
+      //location.href = "https://tarjeta-meli.netlify.app/";
     }
 
     localStorage.removeItem("cardImg");
@@ -112,12 +112,12 @@ import Date from "./Date.astro";
       shareButtons.classList.add("hidden");
     }
     //set img src
-    console.log(params.cardImg === "null");
+    /* console.log(params.cardImg === "null");
     if (params.cardImg !== "null") {
       cardImg.setAttribute("src", params.cardImg);
     } else {
       cardImg.setAttribute("src", "image/img-meli-1.webp");
-    }
+    } */
     //set name
     if (params.cardName) {
       cardName.textContent =

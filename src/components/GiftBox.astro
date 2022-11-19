@@ -186,8 +186,8 @@
       if (step === 4) {
         const cardName = localStorage.getItem("cardName");
         const cardImg = localStorage.getItem("cardImg");
-        //location.href = `http://localhost:3000/tarjeta?cardImg=${cardImg}&cardName=${cardName}`;
-        location.href = `https://tarjeta-meli.netlify.app/tarjeta?cardImg=${cardImg}&cardName=${cardName}`;
+        location.href = `http://localhost:3000/tarjeta?cardImg=${cardImg}&cardName=${cardName}`;
+        //location.href = `https://tarjeta-meli.netlify.app/tarjeta?cardImg=${cardImg}&cardName=${cardName}`;
         return;
       }
       setTimeout(openBox, stepMinutes[step - 1]);
