@@ -549,7 +549,7 @@ class Piano extends Component {
             Empezar de nuevo
           </button>
           <img
-            src="image/img-meli-5.webp"
+            src="/image/img-meli-5.webp"
             className="w-[500px] hidden"
             data-win
           />
