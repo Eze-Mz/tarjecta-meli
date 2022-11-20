@@ -31,3 +31,63 @@
     background: #9046ffc2;
   }
 }
+
+/*Piano styles*/
+
+/* @font-face src: url(https://assets.codepen.io/4291733/SemplicitaPro-Medium.woff2)
+  font-family: SemplicitaPro */
+
+/* {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 36px;
+  background: #efefef;
+} */
+.Synth {
+  width: 320px;
+}
+.Synth .preset,
+.Synth .key {
+  cursor: pointer;
+}
+.Synth .st0 {
+  fill: #ffa6f7;
+  stroke: #892276;
+  stroke-miterlimit: 10;
+}
+.Synth .st1 {
+  fill: #892276;
+}
+.Synth .st2 {
+  fill: #ff79e6;
+}
+.Synth .st3 {
+  fill: white;
+  stroke: #892276;
+  stroke-miterlimit: 10;
+}
+.Synth .st4 {
+  fill: #ffe1f7;
+}
+.Synth .st5 {
+  fill: #ffa6f7;
+}
+.Synth .st6 {
+  fill: white;
+}
+.Synth .st7 {
+  fill: #f993ea;
+}
+.Synth .st8 {
+  fill: white;
+  stroke: #ff79e6;
+  stroke-miterlimit: 10;
+}
+.Synth .st9 {
+  fill: #ff79e6;
+  stroke: white;
+  stroke-miterlimit: 10;
+}
