@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+const phrase1 = ["q", "r", "y", "r", "r"];
+const phrase2 = ["q", "r", "r", "y", "t"];
+const phrase3 = ["y", "6", "y", "t", "r", "e", "e"];
+const phrase4 = ["q", "w", "e", "e", "r"];
 
-const solution = ["e", "t", "q", "y", "w", "r", "i", "u"];
+const solution = [...phrase1, ...phrase2, ...phrase3, ...phrase4];
 
 class Piano extends Component {
   constructor(props) {
@@ -45,9 +49,6 @@ class Piano extends Component {
     } else {
       data.target = e.currentTarget;
       data.key = data.target.getAttribute("data-key");
-    }
-    if (solution.includes(data.key)) {
-      data.target.children[0].style.fill = "#e9d3e6";
     }
 
     this.playSound(data);
@@ -128,39 +129,34 @@ class Piano extends Component {
       });
     } catch {}
   };
-  /*
-  tecla -> q  - w   - e  - r  - t   - y  - u  - i
-  nota  -> Do - Re  - Mi - Fa - Sol - La - Si - Do
-  suena -> Mi - Sol - Do - La - Re  - Fa - Do - Si
-  */
 
   togglePiano() {
     this.state.keys.q =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-e5.mp3";
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-c5.mp3";
     this.state.keys["2"] =
       "https://raw.githubusercontent.com/xLerida/synth/master/piano-c5b.mp3";
     this.state.keys.w =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-g5.mp3";
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-d5.mp3";
     this.state.keys["3"] =
       "https://raw.githubusercontent.com/xLerida/synth/master/piano-d5b.mp3";
     this.state.keys.e =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-c5.mp3";
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-e5.mp3";
     this.state.keys.r =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-a5.mp3";
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-f5.mp3";
     this.state.keys["4"] =
       "https://raw.githubusercontent.com/xLerida/synth/master/piano-f5b.mp3";
     this.state.keys.t =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-d5.mp3";
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-g5.mp3";
     this.state.keys["5"] =
       "https://raw.githubusercontent.com/xLerida/synth/master/piano-g5b.mp3";
     this.state.keys.y =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-f5.mp3";
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-a5.mp3";
     this.state.keys["6"] =
       "https://raw.githubusercontent.com/xLerida/synth/master/piano-a5b.mp3";
     this.state.keys.u =
-      "https://raw.githubusercontent.com/xLerida/synth/master/piano-c6.mp3";
-    this.state.keys.i =
       "https://raw.githubusercontent.com/xLerida/synth/master/piano-b5.mp3";
+    this.state.keys.i =
+      "https://raw.githubusercontent.com/xLerida/synth/master/piano-c6.mp3";
   }
 
   componentDidMount() {
