@@ -173,7 +173,7 @@ class Piano extends Component {
 
   render() {
     return (
-      <div className="relative mx-auto w-fit">
+      <div className="relative mx-auto w-fit mt-10">
         <svg className="Synth w-[800px]" viewBox="0 0 401 203.6">
           <path
             className="base st0"
@@ -540,10 +540,10 @@ class Piano extends Component {
             {/* Finish keys */}
           </g>
         </svg>
-        <div className="absolute top-[15px] left-[95px] flex justify-center flex-col">
-          <h1 className="text-xs">Tocá las notas en orden!</h1>
+        <div className="absolute top-[15px] left-[105px] flex justify-center flex-col">
+          <h1 className="text-xs text-teal-400">Tocá las notas en orden!</h1>
           <button
-            className="bg-[#ffa6f7] px-2 py-1 rounded text-xs"
+            className="bg-pink-100 px-2 py-1 rounded text-xs text-teal-400"
             onClick={this.resetAttempt}
           >
             Empezar de nuevo

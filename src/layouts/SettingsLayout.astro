@@ -16,7 +16,7 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="pb-80 bg-gradient-to-br from-teal-100 to-pink-100">
     <slot />
   </body>
 
@@ -35,9 +35,11 @@ const { title } = Astro.props;
     imgList.forEach((img) => {
       img.children[0].addEventListener("click", () => {
         imgList.forEach((img) => {
-          img.children[0].classList.remove("border-purple-500");
+          img.children[0].classList.remove("border-x-pink-500/70");
+          img.children[0].classList.remove("border-y-pink-300/70");
         });
-        img.children[0].classList.add("border-purple-500");
+        img.children[0].classList.add("border-x-pink-500/70");
+        img.children[0].classList.add("border-y-pink-300/70");
         console.log(img.children[0].getAttribute("src"));
 
         localStorage.setItem("cardImg", img.children[0].getAttribute("src"));
