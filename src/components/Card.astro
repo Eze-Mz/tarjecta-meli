@@ -14,11 +14,11 @@ import Date from "./Date.astro";
           class="atropos-inner transition-all duration-700 relative p-4 border-4 rounded-md shadow-2xl border-[color:var(--border-card)] bg-[color:var(--background-card)] backdrop-blur-sm flex flex-col"
         >
           <div
-            class="flex flex-col sm:flex-row justify-between items-center mb-4"
+            class="flex flex-col sm:flex-row justify-between items-center mb-4 md:px-10"
           >
             <div class="flex flex-col">
               <div
-                class="text-[1.5rem] sm:text-2xl md:text-3xl font-bold text-slate-900"
+                class="text-[1.5rem] sm:text-2xl md:text-3xl font-bold text-slate-800"
                 data-name
               >
                 Acá va tu nombre...
@@ -31,7 +31,7 @@ import Date from "./Date.astro";
                   ME RECIBO!!!
                 </h1>
                 <p class="text-sm md:text-lg md:pl-0 md:text-center pl-2">
-                  (&#128227; de profe de música &#128105; &#127929;)
+                  (de profe de música &#128105; &#127929;)
                 </p>
               </div>
             </div>
@@ -146,7 +146,7 @@ import Date from "./Date.astro";
 
 <style>
   .share-button {
-    @apply rounded bg-gradient-to-r from-gray-700 via-gray-900 to-black text-white px-4 py-1 active:from-gray-900
+    @apply rounded bg-teal-600 text-white px-4 py-1 active:from-gray-900
     active:to-black md:text-xl md:px-6;
   }
   .atropos {
