@@ -35,7 +35,7 @@ const PianoIntro = () => {
       </h1>
 
       <p className="text-center">
-        Pided que toques el "Arroz con leche" (en FaM) para recibir tu
+        Pide que toques el "Arroz con leche" (en FaM) para recibir tu
         invitación!
       </p>
       <p className="text-center">
@@ -52,7 +52,7 @@ const PianoIntro = () => {
         <ShowKeys keys={solution} tiny={true} />
       </div>
       <p className="text-center mt-2">
-        (pista de yapa: las teclas apretadas que se muestra son solo las que
+        (pista de yapa: las teclas apretadas que se muestran son solo las que
         deben usarse &#128521;)
       </p>
     </div>
