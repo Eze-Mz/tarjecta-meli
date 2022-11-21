@@ -13,7 +13,7 @@ class Piano extends Component {
     super(props);
 
     this.state = {
-      win: true,
+      win: false,
       keysPressed: [],
       keys: {
         q: "",
