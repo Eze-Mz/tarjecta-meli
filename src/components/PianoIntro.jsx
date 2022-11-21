@@ -1,44 +1,60 @@
+import { useState } from "react";
 import ShowKeys from "./ShowKeys";
+const solution = [
+  "q",
+  "r",
+  "y",
+  "r",
+  "r",
+  "q",
+  "r",
+  "r",
+  "y",
+  "t",
+  "y",
+  "6",
+  "y",
+  "t",
+  "r",
+  "e",
+  "e",
+  "q",
+  "w",
+  "e",
+  "e",
+  "r",
+];
 
 const PianoIntro = () => {
-  return (
-    <div className="flex mt-10 w-[280px] md:w-[450px] flex-col mx-auto">
-      <h1>La profe Meli se tomó muy a pecho su recibida... </h1>
+  const [show, setShow] = useState(false);
 
-      <p>Tocá el "Arroz con leche" (en FaM) para recibir tu invitación:</p>
-      <p>Pista(orden de notas):</p>
-      <ShowKeys
-        keys={[
-          "q",
-          "r",
-          "y",
-          "r",
-          "r",
-          "q",
-          "r",
-          "r",
-          "y",
-          "t",
-          "y",
-          "6",
-          "y",
-          "t",
-          "r",
-          "e",
-          "e",
-          "q",
-          "w",
-          "e",
-          "e",
-          "r",
-        ]}
-        tiny={true}
-      />
-      <p>
+  return (
+    <div className="flex mt-10 px-10 flex-col mx-auto">
+      <h1 className="text-2xl text-center my-2">
+        La profe Meli se tomó muy a pecho su recibida...
+      </h1>
+
+      <p className="text-center">
+        Pided que toques el "Arroz con leche" (en FaM) para recibir tu
+        invitación!
+      </p>
+      <p className="text-center">
+        Pista (
+        <button
+          className="rounded bg-teal-600 text-white px-1 py-1 md:px-2 text-xs mx-1 mt-2"
+          onClick={() => setShow(!show)}
+        >
+          Mostrar orden de las notas
+        </button>
+        )
+      </p>
+      <div className={`mx-auto ${show ? "" : "hidden"}`}>
+        <ShowKeys keys={solution} tiny={true} />
+      </div>
+      <p className="text-center mt-2">
         (pista de yapa: las teclas apretadas que se muestra son solo las que
         deben usarse &#128521;)
       </p>
-      <button>Ni ganas! Dame mi invitación!</button>
     </div>
   );
 };

@@ -13,6 +13,7 @@ class Piano extends Component {
     super(props);
 
     this.state = {
+      win: true,
       keysPressed: [],
       keys: {
         q: "",
@@ -67,17 +68,16 @@ class Piano extends Component {
         return element === arrayOfKeys[index];
       });
     if (is_same) {
+      this.setState({ win: true });
       const winMsg = document.querySelector("[data-win]");
       winMsg.classList.remove("hidden");
+      setTimeout(() => {
+        winMsg.classList.add("hidden");
+      }, 2000);
     }
   };
 
   resetAttempt = () => {
-    this.state.keysPressed.forEach((keyPressed) => {
-      console.log(keyPressed);
-      const domKeys = document.querySelectorAll(".key");
-      domKeys.forEach((el) => {});
-    });
     this.setState({ keysPressed: [] });
   };
 
@@ -175,7 +175,7 @@ class Piano extends Component {
     return (
       <>
         <PianoIntro />
-        <div className="relative mx-auto w-fit mt-10">
+        <div className="relative mx-auto w-fit mt-6">
           <svg className="Synth md:w-[450px] " viewBox="0 0 401 203.6">
             <path
               className="base st0"
@@ -548,20 +548,36 @@ class Piano extends Component {
               {/* Finish keys */}
             </g>
           </svg>
-          <div className="absolute top-[15px] left-[105px] flex justify-center flex-col">
+          <div className="absolute top-[15px] left-[105px] md:top-[20px] md:left-[143px] flex justify-center flex-col">
             <button
-              className="bg-pink-100 px-2 py-1 rounded text-xs text-teal-400"
+              className="rounded bg-[#ff79e6] text-white px-2 py-1 md:px-4 text-sm md:text-xl mx-1 mt-2 active:bg-[#ffa6f7]"
               onClick={this.resetAttempt}
             >
               Empezar de nuevo
             </button>
-            <img
-              src="/image/img-meli-5.webp"
-              className="w-[500px] hidden"
-              data-win
-            />
           </div>
           <ShowKeys keys={this.state.keysPressed} tiny={false} />
+          <div
+            className="absolute w-40 top-0 right-10 md:w-[150px] hidden"
+            data-win
+          >
+            <img src="/image/img-meli-5.webp" />
+          </div>
+          {this.state.win ? (
+            <a
+              href="https://tarjeta-meli.netlify.app//datos"
+              className="rounded bg-gradient-to-r w-fit block mx-auto mt-10 from-teal-400 to-black text-white px-4 py-1 active:from-gray-900 active:to-black md:text-xl md:px-6"
+            >
+              Ganaste tu invitación!
+            </a>
+          ) : (
+            <a
+              href="https://tarjeta-meli.netlify.app//datos"
+              className="rounded bg-gradient-to-r w-fit block mx-auto mt-10 from-gray-700 via-gray-900 to-black text-white px-4 py-1 active:from-gray-900 active:to-black md:text-xl md:px-6"
+            >
+              Ni ganas, dame mi invitación!
+            </a>
+          )}
         </div>
       </>
     );
